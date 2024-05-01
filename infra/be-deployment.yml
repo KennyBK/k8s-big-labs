@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: movie-be-app
-        image: kennybk/movie-be:v4
+        image: kennybk/movie-be:v5
         resources:
           limits:
             memory: "256Mi"
