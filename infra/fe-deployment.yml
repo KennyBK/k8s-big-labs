@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-fe-app
+  labels:
+    app: movie-fe-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movie-fe-app
+  template:
+    metadata:
+      labels:
+        app: movie-fe-app
+    spec:
+      containers:
+      - name: movie-fe-app
+        image: kennybk/movie-fe:v11
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 80
+        env:
+        - name: BASE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: fe-config
+              key: base_url
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fe-service
+spec:
+  selector:
+    app: movie-fe-app
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30000
+

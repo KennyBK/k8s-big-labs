@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-be-app
+  labels:
+    app: movie-be-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: movie-be-app
+  template:
+    metadata:
+      labels:
+        app: movie-be-app
+    spec:
+      containers:
+      - name: movie-be-app
+        image: kennybk/movie-be:v4
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DATABASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: be-config
+              key: db_host
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: be-config
+              key: db_port
+        - name: DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: be-config
+              key: db_name
+        - name: DATABASE_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: be-config
+              key: db_user
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-credentials
+              key: mongodb-passwords
+        - name: DATABASE_AUTHENTICATION_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: be-config
+              key: db_authentication_database
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: be-service
+spec:
+  type: NodePort
+  selector:
+    app: movie-be-app
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 30001

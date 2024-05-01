@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./movie-fe
+      dockerfile: Dockerfile
+    # image: kennybk/movie-fe:v2
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - my-network
+
+  backend:
+    build:
+      context: ./movie-be
+      dockerfile: Dockerfile
+    # image: kennybk/movie-be:v2
+    ports:
+      - "8080:8080" # Adjust port if needed
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge

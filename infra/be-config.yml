@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: be-config
+data:
+  db_host: "my-mongodb"
+  db_port: "27017"
+  db_name: "movie-api-db"
+  db_user: "admin"
+  db_authentication_database: "movie-api-db"
