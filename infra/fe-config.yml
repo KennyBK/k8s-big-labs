@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: fe-config
 data:
-  base_url: "http://kennybk.site/api"
+  base_url: "https://kennybk.site/api"
