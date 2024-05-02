@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: movie-fe-app
-        image: kennybk/movie-fe:v15
+        image: kennybk/movie-fe:v16
         resources:
           limits:
             memory: "128Mi"

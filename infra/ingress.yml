@@ -17,10 +17,11 @@ spec:
             name: fe-service
             port:
               number: 80
-      - path: /api/v1/movies
+      - path: /api
         pathType: Prefix
         backend:
           service:
             name: be-service
             port:
               number: 8080
+
