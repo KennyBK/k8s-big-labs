@@ -11,3 +11,7 @@
 - [x] Store relevant credential settings in Secrets.
 - [ ] (Optional) Use DaemonSet to deploy ElasticSearch (using the fluentd-elasticsearch image) or complete EFK stack or any kind of logging and monitoring stacks.
 - [x] Deploy an Ingress to allow access to the Front-End service from the internet using a DNS. Configuring HTTPS is a bonus point. If a domain name is not available, use LoadBalancer service type (maximum points will not be awarded).
+
+## DEMO VIDEO
+
+[Watch the video](https://drive.google.com/file/d/1FPYVg86Dx46B6la01ZFm2pG4HxXIZzUQ/view?usp=sharing)
