@@ -1,0 +1,7 @@
+aggregator:
+  configMap: "elasticsearch-output"
+  extraEnvVars:
+  - name: ELASTICSEARCH_HOST
+    value: "elasticsearch.default.svc.cluster.local"
+  - name: ELASTICSEARCH_PORT
+    value: "9200"

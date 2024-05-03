@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: be-config
 data:
-  db_host: "my-mongodb"
+  db_host: "my-mongodb-0.my-mongodb-headless.default.svc.cluster.local"
   db_port: "27017"
   db_name: "movie-api-db"
   db_user: "admin"
