@@ -10,39 +10,46 @@ pool: my-laptop
 
 stages:
 - stage: Build
-  jobs: 
+  jobs:
   - job: Build_FirstJob
     steps:
-    - bash: echo Build 1
-  - job: Build_SecondJob
-    steps:
-    - bash: echo Build 2
-- stage: Implement
-  dependsOn: Build
-  jobs: 
-    - job: Implement_FirstJob
-      steps:
-      - script: echo Implement 1
-    - job: Implement_SecondJob
-      steps:
-      - script: echo Implement 2
-- stage: Test
-  dependsOn: Build
-  jobs: 
-    - job: Test_FirstJob
-      steps:
-      - script: echo Test 1
-    - job: Test_SecondJob
-      steps:
-      - script: echo Test 2
-- stage: Deploy 
-  dependsOn: 
-  - Implement
-  - Test
-  jobs: 
-    - job: Deploy_FirstJob
-      steps:
-      - script: echo Deploy 1
-    - job: Deploy_SecondJob
-      steps:
-      - script: echo Deploy 2
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourcesDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
+
+#   - job: Build_SecondJob
+#     steps:
+#     - bash: echo Build 2
+# - stage: Implement
+#   dependsOn: Build
+#   jobs: 
+#     - job: Implement_FirstJob
+#       steps:
+#       - script: echo Implement 1
+#     - job: Implement_SecondJob
+#       steps:
+#       - script: echo Implement 2
+# - stage: Test
+#   dependsOn: Build
+#   jobs: 
+#     - job: Test_FirstJob
+#       steps:
+#       - script: echo Test 1
+#     - job: Test_SecondJob
+#       steps:
+#       - script: echo Test 2
+# - stage: Deploy 
+#   dependsOn: 
+#   - Implement
+#   - Test
+#   jobs: 
+#     - job: Deploy_FirstJob
+#       steps:
+#       - script: echo Deploy 1
+#     - job: Deploy_SecondJob
+#       steps:
+#       - script: echo Deploy 2
