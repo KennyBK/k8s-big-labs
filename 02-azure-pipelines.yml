@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool: my-laptop
+
+stages:
+- stage: Build
+  jobs: 
+  - job: Build_FirstJob
+    steps:
+    - bash: echo Build 1
+  - job: Build_SecondJob
+    steps:
+    - bash: echo Build 2
+- stage: Implement
+  jobs: 
+    - job: Implement_FirstJob
+      steps:
+      - script: echo Implement 1
+    - job: Implement_SecondJob
+      steps:
+      - script: echo Implement 2
+- stage: Test
+  jobs: 
+    - job: Test_FirstJob
+      steps:
+      - script: echo Test 1
+    - job: Test_SecondJob
+      steps:
+      - script: echo Test 2
+- stage: Deploy 
+  jobs: 
+    - job: Deploy_FirstJob
+      steps:
+      - script: echo Deploy 1
+    - job: Deploy_SecondJob
+      steps:
+      - script: echo Deploy 2
