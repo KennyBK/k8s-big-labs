@@ -21,7 +21,7 @@ jobs:
 
 - job: Job2
   steps:
-    - script: echo Love Thu <3
+    - script: echo "Love Thu <3"
       displayName: 'Run a one-line script'
 
     - script: |
