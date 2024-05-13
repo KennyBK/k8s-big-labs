@@ -9,7 +9,7 @@ trigger:
 pool: my-laptop
 
 steps:
-- script: echo Hello, world!
+- script: echo Hello, world I just Changed!
   displayName: 'Run a one-line script'
 
 - script: |
